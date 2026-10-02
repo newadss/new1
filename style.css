@@ -1,0 +1,64 @@
+/* Theme: OCEAN TEAL — deep sea teal, aqua accent, soft yellow detail; centered academy card, shiny CTA */
+:root{
+  color-scheme:dark;
+  --bg:#062126; --panel:rgba(14,52,58,.55); --edge:rgba(49,208,200,.24);
+  --text:#ecfbfa; --muted:#9cc2c0; --soft:#cfe8e6;
+  --aqua:#31d0c8; --aqua2:#5be3a8; --yellow:#ffe066;
+  --kn:"Noto Sans Kannada","Tunga",-apple-system,"Segoe UI",Roboto,sans-serif;
+  --en:"Urbanist",-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--kn);background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;
+     min-height:100vh;overflow-x:hidden;
+     background-image:radial-gradient(ellipse 90% 45% at 50% -5%,rgba(49,208,200,.14),transparent 70%)}
+.en{display:block;font-family:var(--en);color:var(--muted);font-size:.88em;font-weight:500}
+
+.wrap{max-width:430px;margin:0 auto;padding:calc(22px + env(safe-area-inset-top)) 16px calc(22px + env(safe-area-inset-bottom));
+      display:flex;flex-direction:column;gap:12px}
+.glass{background:var(--panel);border:1px solid var(--edge);border-radius:22px;
+       -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+
+.card{padding:24px 18px 20px;text-align:center}
+.av{width:80px;height:80px;margin:0 auto;border-radius:50%;position:relative;overflow:hidden;display:grid;place-items:center;
+    background:#0d3a40;border:2px solid var(--aqua);font:800 22px/1 var(--en);color:var(--aqua)}
+.av img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.name{margin-top:10px;font:800 19px/1.25 var(--en)}
+.tag{display:inline-block;margin-top:8px;font:700 11.5px/1 var(--kn);color:#062126;background:var(--yellow);padding:6px 11px;border-radius:999px}
+
+h1{margin-top:16px;font-size:21px;line-height:1.55;font-weight:800;text-wrap:balance}
+h1 .en{font-size:15.5px;color:var(--soft);font-weight:700;margin-top:4px}
+.sub{margin-top:6px;font-size:14px;color:var(--soft)}
+.sub .en{font-size:13px}
+
+.gets{list-style:none;margin-top:16px;display:grid;gap:8px;text-align:left}
+.gets li{display:flex;gap:11px;align-items:center;padding:10px 12px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);font-size:14px}
+.gets .en{font-size:12.5px}
+.tick{flex:0 0 auto;width:24px;height:24px;border-radius:8px;display:grid;place-items:center;background:rgba(49,208,200,.15)}
+
+/* CTA: light shine sweep + gentle breathing */
+.cta{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:9px;width:100%;margin-top:20px;padding:16px 14px;border-radius:16px;
+     text-decoration:none;color:#04201f;font:800 18px/1.3 var(--en);
+     background:linear-gradient(100deg,var(--aqua),var(--aqua2));
+     box-shadow:0 8px 22px rgba(49,208,200,.32);animation:breathe 2.6s ease-in-out infinite;transition:transform .15s}
+.cta::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;
+     background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);animation:shine 3.2s ease-in-out infinite}
+.cta:active{transform:scale(.97)}
+.cta:focus-visible{outline:2px solid #fff;outline-offset:3px}
+@keyframes shine{0%,55%{left:-60%}100%{left:130%}}
+@keyframes breathe{0%,100%{transform:scale(1);box-shadow:0 8px 22px rgba(49,208,200,.32)}50%{transform:scale(1.025);box-shadow:0 10px 30px rgba(49,208,200,.5)}}
+.hint{margin-top:8px;font:500 12px/1.4 var(--en);color:var(--muted)}
+
+.timer{display:flex;align-items:center;justify-content:center;gap:11px;margin-top:14px;font-size:13px;color:var(--soft);text-align:left}
+.ring{width:40px;height:40px;position:relative;flex:0 0 auto}
+.ring svg{transform:rotate(-90deg)}
+.ring .bg{stroke:rgba(255,255,255,.1)}
+.ring .fg{stroke:var(--aqua);stroke-linecap:round;transition:stroke-dashoffset 1s linear}
+.ring b{position:absolute;inset:0;display:grid;place-items:center;font:800 15px/1 var(--en);color:var(--aqua)}
+.free{margin-top:10px;font:12px/1.4 var(--en);color:var(--muted)}
+
+.disc{padding:12px 14px;font-size:11px;line-height:1.75;color:var(--soft);border-radius:16px;border-color:rgba(255,224,102,.25);background:rgba(255,224,102,.04)}
+.disc b{color:var(--yellow)} .disc p+p{margin-top:6px}
+.foot{text-align:center;font:11px/1.6 var(--en);color:var(--muted);padding:2px 6px}
+.foot a{color:var(--muted)}
+
+@media(prefers-reduced-motion:reduce){.cta,.cta::after{animation:none}.ring .fg{transition:none}}
